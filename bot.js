@@ -51,7 +51,12 @@ controller.hears(['挨拶', 'こんにちは', 'Bot', 'あなた', '誰', 'だ�
 
 });
 
+controller.hears(['ちん'], 'direct_message,direct_mention,mention', function (bot, message) {
 
+    // bot.reply()で、botに発言をさせます。
+    bot.reply(message, 'ぽこ :mushroom:');
+
+});
 
 //=========================================================
 // 質問形式の会話
