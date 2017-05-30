@@ -47,7 +47,7 @@ var bot = controller.spawn({
 controller.hears(['挨拶', 'こんにちは', 'Bot', 'あなた', '誰', 'だれ', '自己紹介'], 'direct_message,direct_mention,mention', function (bot, message) {
 
     // bot.reply()で、botに発言をさせます。
-    bot.reply(message, 'こんにちは！私は *Botkit製のBot* です！ \n _いろんな事ができますよ！_ :smiley:');
+    bot.reply(message, 'こんにちは！私は *世界のみやたです* です！ \n _いろんな事ができますよ！でゅふふ_ :smiley:');
 
 });
 
@@ -55,6 +55,11 @@ controller.hears(['ちん'], 'direct_message,direct_mention,mention', function (
 
     // bot.reply()で、botに発言をさせます。
     bot.reply(message, 'ぽこ :mushroom:');
+ 
+ controller.hears(['マリオカート'], 'direct_message,direct_mention,mention', function (bot, message) {
+
+    // bot.reply()で、botに発言をさせます。
+    bot.reply(message, 'マーリオッアーッエーイッ☆ :mushroom:');
 
 });
 
@@ -104,6 +109,51 @@ controller.hears(['ラーメン'], 'direct_message,direct_mention,mention', func
     })
 
 });
+ 
+ 
+ controller.hears(['体位'], 'direct_message,direct_mention,mention', function (bot, message) {
+
+    bot.reply(message, ':ramen:いいですよね:grin:');
+
+    // 会話を開始します。
+    bot.startConversation(message, function (err, convo) {
+
+        // convo.ask() で質問をします。
+        convo.ask('私がどの体位が好きか当ててみてください！', [
+            {
+                pattern: '騎乗位', // マッチさせる単語
+                callback: function (response, convo) {
+
+                    // ▼ マッチした時の処理 ▼
+
+                    convo.say('正解！:ok_woman:\n騎乗位！これぞ王道！:+1:'); // convo.say()で発言をします。
+                    convo.next(); // convo.next()で、会話を次に進めます。通常は、会話が終了します。
+                }
+            },
+            {
+                pattern: 'バック',
+                callback: function (response, convo) {
+                    convo.say('正解！:ok_woman:\n逆に後ろから突かれたい//////:+1:');
+                    convo.next();
+                }
+            },
+            {
+                default: true,
+                callback: function (response, convo) {
+
+                    // ▼ どのパターンにもマッチしない時の処理 ▼
+
+                    convo.say('ハァハァ:no_good:');
+                    convo.repeat(); // convo.repeat()で、質問を繰り返します。
+                    convo.next(); // 会話を次に進めます。この場合、最初の質問にも戻ります。
+                }
+            }
+        ]);
+
+    })
+
+});
+
 
 
 
