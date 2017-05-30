@@ -55,6 +55,7 @@ controller.hears(['ちん'], 'direct_message,direct_mention,mention', function (
 
     // bot.reply()で、botに発言をさせます。
     bot.reply(message, 'ぽこ :mushroom:');
+}
  
  controller.hears(['マリオカート'], 'direct_message,direct_mention,mention', function (bot, message) {
 
