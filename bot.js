@@ -56,13 +56,15 @@ controller.hears(['ちん'], 'direct_message,direct_mention,mention', function (
     // bot.reply()で、botに発言をさせます。
     bot.reply(message, 'ぽこ :mushroom:');
 });
- 
+
  controller.hears(['マリオカート'], 'direct_message,direct_mention,mention', function (bot, message) {
 
     // bot.reply()で、botに発言をさせます。
     bot.reply(message, 'マーリオッアーッエーイッ☆ :mushroom:');
 
 });
+
+
 
 //=========================================================
 // 質問形式の会話
@@ -110,7 +112,7 @@ controller.hears(['好きな女性のタイプ'], 'direct_message,direct_mention
     })
 
 });
- 
+
 //=========================================================
 // 絵文字リアクション
 //=========================================================
@@ -188,6 +190,21 @@ controller.hears(['(.*)って呼んで'], 'direct_message,direct_mention,mention
                 name: name_from_msg
             };
 
+        }
+        else {
+
+          //
+          controller.storage.users.delete(user_info, function(err) {
+
+            bot.reply(message, 'あなたは *' + user_info.name + '* さんですね！変更します。');
+
+            controller.storage.users.save(user_info, function (err, id) {
+
+                bot.reply(message, user_info.name + '* さんですね！ちんこ');
+
+            });
+
+          });
         }
 
         // user_infoを保存します。
