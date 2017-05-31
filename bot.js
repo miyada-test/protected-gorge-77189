@@ -47,7 +47,7 @@ var bot = controller.spawn({
 controller.hears(['挨拶', 'こんにちは', 'Bot', 'あなた', '誰', 'だれ', '自己紹介'], 'direct_message,direct_mention,mention', function (bot, message) {
 
     // bot.reply()で、botに発言をさせます。
-    bot.reply(message, 'こんにちは！私は *世界のみやたです* です！ \n _いろんな事ができますよ！でゅふふ_ :smiley:');
+    bot.reply(message, '宮田農園怠惰担当 ペテルギウス・ミヤタコンティ...*デスっ！*  \n _あぁ、脳が..震える_ :smiley:');
 
 });
 
@@ -61,6 +61,13 @@ controller.hears(['ちん'], 'direct_message,direct_mention,mention', function (
 
     // bot.reply()で、botに発言をさせます。
     bot.reply(message, 'マーリオッアーッエーイッ☆ :mushroom:');
+
+});
+
+controller.hears(['脳'], 'direct_message,direct_mention,mention', function (bot, message) {
+
+    // bot.reply()で、botに発言をさせます。
+    bot.reply(message, '怠惰ァ、怠惰怠惰怠惰怠惰ァ :mushroom:');
 
 });
 
@@ -191,28 +198,13 @@ controller.hears(['(.*)って呼んで'], 'direct_message,direct_mention,mention
             };
 
         }
-        else {
-
-          //
-          controller.storage.users.delete(user_info, function(err) {
-
-            bot.reply(message, 'あなたは *' + user_info.name + '* さんですね！変更します。');
-
-            controller.storage.users.save(user_info, function (err, id) {
-
-                bot.reply(message, user_info.name + '* さんですね！ちんこ');
-
-            });
-
-          });
-        }
-
+     
         // user_infoを保存します。
         controller.storage.users.save(user_info, function (err, id) {
 
             // ▼ 保存完了後の処理▼
 
-            bot.reply(message, 'あなたのお名前は *' + user_info.name + '* さんですね！ちんこ');
+            bot.reply(message, 'あなた、怠惰ですねー');
 
         });
 
